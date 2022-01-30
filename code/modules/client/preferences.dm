@@ -1990,7 +1990,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						hairstyle = random_hairstyle(gender)
 
 				if("limbs")
-					if(href_list["customize_limbs"])
+					if(href_list["customize_limb"])
 						var/limb = href_list["customize_limb"]
 						var/bodypart_name
 						switch(limb)
