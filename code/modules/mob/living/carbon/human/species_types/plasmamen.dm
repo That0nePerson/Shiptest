@@ -10,6 +10,8 @@
 	mutanttongue = /obj/item/organ/tongue/bone/plasmaman
 	mutantliver = /obj/item/organ/liver/plasmaman
 	mutantstomach = /obj/item/organ/stomach/plasmaman
+	mutant_bodyparts = list("plasmaman_species")
+	default_features = list("plasmaman_species" = "Human")
 	burnmod = 1.5
 	heatmod = 1.5
 	brutemod = 1.5
@@ -235,3 +237,13 @@
 					H.emote("sigh")
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE
+
+/datum/species/plasmaman/replace_body(mob/living/carbon/C, datum/species/new_species)
+	..()
+
+	var/datum/sprite_accessory/plasmaman_species/species_choice = GLOB.plasmaman_species_list[C.dna.features["plasmaman_species"]]
+
+	for(var/obj/item/bodypart/BP as anything in C.bodyparts) //Override bodypart data as necessary
+		BP.limb_id = species_choice.limbs_id
+		BP.name = "\improper[species_choice.name] [parse_zone(BP.body_zone)]"
+		BP.update_limb()

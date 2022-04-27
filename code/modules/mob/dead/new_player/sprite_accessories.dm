@@ -2580,4 +2580,20 @@
 /datum/sprite_accessory/kepori_body_feathers/none
 	name = "None"
 
+/datum/sprite_accessory/plasmaman_species // see ipc chassis
+	icon = null
+	icon_state = "who cares fuck you"
+	color_src = 0
+
+/datum/sprite_accessory/plasmaman_species/human
+	name = "Human"
+	limbs_id = "p_human"
+
+/datum/sprite_accessory/plasmaman_species/lizard
+	name = "Sarathi"
+	limbs_id = "p_lizard"
+
+/datum/sprite_accessory/plasmaman_species/moth
+	name = "Moth"
+	limbs_id = "p_moth"
 //ENDWS

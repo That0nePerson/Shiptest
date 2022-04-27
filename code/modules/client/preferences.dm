@@ -108,6 +108,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							"ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)",
 							"kepori_feathers" = "Plain",
 							"kepori_body_feathers" = "Plain",
+							"plasmaman_species" = "Human",
 							"flavor_text" = "",
 							"body_size" = "Normal"
 						)
@@ -674,6 +675,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a href='?_src_=prefs;preference=kepori_body_feathers;task=input'>[features["kepori_body_feathers"]]</a><BR>"
 				dat += "<span style='border:1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
 				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIR_COLOR]'>[(randomise[RANDOM_FACIAL_HAIR_COLOR]) ? "Lock" : "Unlock"]</A><BR>"
+
+				mutant_category++
+				if(mutant_category >= MAX_MUTANT_ROWS)
+					dat += "</td>"
+					mutant_category = 0
+
+			if("plasmaman_species" in pref_species.mutant_bodyparts)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Phorid Species</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=plasmaman_species;task=input'>[features["plasmaman_species"]]</a><BR>"
 
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
@@ -1893,6 +1907,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_kepori_feathers = input(user, "Choose your character's face type:", "Character Preference") as null|anything in GLOB.kepori_body_feathers_list
 					if (new_kepori_feathers)
 						features["kepori_body_feathers"] = new_kepori_feathers
+
+				if("plasmaman_species")
+					var/new_plasmaman_species
+					new_plasmaman_species = input(user, "Choose your Phorid's species:", "Character Preference") as null|anything in GLOB.plasmaman_species_list
+					if(new_plasmaman_species)
+						features["plasmaman_species"] = new_plasmaman_species
 
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones

@@ -968,6 +968,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.kepori_feathers_list[H.dna.features["kepori_feathers"]]
 				if("kepori_body_feathers")
 					S = GLOB.kepori_body_feathers_list[H.dna.features["kepori_body_feathers"]]
+				if("plasmaman_species")
+					S = GLOB.plasmaman_species_list[H.dna.features["plasmaman_species"]]
 			if(!S || S.icon_state == "none")
 				continue
 
